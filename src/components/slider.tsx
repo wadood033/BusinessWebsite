@@ -63,7 +63,7 @@ const Slider: React.FC = () => {
         className="fixed bottom-6 right-6 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 ease-in-out z-20 flex items-center space-x-2"
       >
         <FaWhatsapp className="text-lg" />
-        <span className="hidden sm:inline">Let's Talk Now</span>
+        <span className="hidden sm:inline">Let&rsquo;s Talk Now</span>
       </a>
 
       <style jsx global>{`
