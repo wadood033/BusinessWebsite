@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FaSearch, FaPhoneAlt, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
-import { FaChevronDown } from "react-icons/fa6"; // Import FaChevronDown
+import { FaChevronDown } from "react-icons/fa6";
 
 const allItems = [
   { name: "Crew Neck", path: "/category/crew-neck" },
@@ -16,6 +16,10 @@ const allItems = [
   { name: "American Football Uniform", path: "/category/american-football" },
   { name: "LS Jersey", path: "/category/ls-jersey" },
   { name: "Soccer Jersey", path: "/category/soccer-jersey" },
+  { name: "Another Item 1", path: "/category/another-1" },
+  { name: "Longer Item Name Example 2", path: "/category/longer-2" },
+  { name: "Yet Another Item 3", path: "/category/yet-another-3" },
+  { name: "Final Item Here 4", path: "/category/final-4" },
 ];
 
 const casualWearItems = allItems.filter(item =>
@@ -51,7 +55,8 @@ const Navbar = () => {
       if (
         !casualDropdownRef.current?.matches(':hover') &&
         !sportswearDropdownRef.current?.matches(':hover') &&
-        !casualButtonRef.current?.matches(':hover')
+        !casualButtonRef.current?.matches(':hover') &&
+        !sportswearButtonRef.current?.matches(':hover')
       ) {
         setOpenDropdown(null);
       }
@@ -83,14 +88,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white text-black px-8 py-7 z-50 shadow-md flex items-center h-[80px]  justify-between">
+    <nav className="fixed top-0 left-0 w-full bg-white text-black px-8 py-7 z-50 shadow-md flex items-center h-[80px] justify-between">
       {/* Contact Info (Left on Desktop) */}
       <div className="hidden lg:flex items-center gap-6">
         <Link href="tel:+923277145151" className="flex items-center gap-2 text-gray-700 hover:text-gray-600 transition">
           <FaPhoneAlt className="text-lg" style={{ color: "#228B22" }} /> {/* Phone color */}
           <span>+923277145151</span>
         </Link>
-        <Link href="mailto:jeplaysports@gmail.com" className="flex items-center gap-2 text-gray-700 hover:text-gray-600 transition">
+        <Link href="mailto:jetplaysports@gmail.com" className="flex items-center gap-2 text-gray-700 hover:text-gray-600 transition">
           <FaEnvelope className="text-lg" style={{ color: "#d44638" }} /> {/* Gmail color */}
           <span>jetplaysports@gmail.com</span>
         </Link>
@@ -159,7 +164,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, translateY: 0 }}
                 exit={{ opacity: 0, translateY: -5 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                style={{ minWidth: '180px' }}
+                style={{ minWidth: '220px' }}
               >
                 <ul className="py-0.5">
                   {sportswearItems.map((item, index) => (
@@ -226,7 +231,7 @@ const Navbar = () => {
 
       {/* Hamburger Icon */}
       <div className="lg:hidden flex items-center">
-        <button onClick={toggleMobileMenu} className="text-2xl text-gray-800">
+        <button onClick={toggleMobileMenu} className="text-2xl text-gray-800 focus:outline-none">
           <FaBars className={`${isMobileMenuOpen ? 'hidden' : 'block'}`} />
         </button>
       </div>
@@ -239,16 +244,16 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg p-6 flex flex-col gap-6 z-50"
+            className="fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg p-6 flex flex-col gap-6 z-50 overflow-y-auto" // Added overflow-y-auto
           >
             {/* Close Icon */}
-            <button onClick={toggleMobileMenu} className="absolute top-6 right-6 text-2xl text-gray-800">
+            <button onClick={toggleMobileMenu} className="absolute top-6 right-6 text-2xl text-gray-800 focus:outline-none">
               <FaTimes />
             </button>
 
             {/* Logo */}
             <div className="flex justify-center mb-4">
-              <Link href="/">
+              <Link href="/" onClick={toggleMobileMenu}>
                 <Image src="/companylogofull.png" alt="Logo" width={100} height={50} className="object-contain" />
               </Link>
             </div>
@@ -299,7 +304,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === "Casual Wear" ? null : "Casual Wear")}
-                  className="flex justify-between w-full"
+                  className="flex justify-between w-full focus:outline-none"
                 >
                   Casual Wear
                   <FaChevronDown
@@ -327,7 +332,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === "Sportswear" ? null : "Sportswear")}
-                  className="flex justify-between w-full"
+                  className="flex justify-between w-full focus:outline-none"
                 >
                   Sportswear
                   <FaChevronDown

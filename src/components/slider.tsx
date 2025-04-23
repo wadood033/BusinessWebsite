@@ -42,6 +42,7 @@ const Slider: React.FC = () => {
                 fill
                 priority
                 className="object-cover mt-20"
+                style={{ objectFit: 'fill' }}
               />
             </div>
           </SwiperSlide>
