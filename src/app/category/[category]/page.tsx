@@ -44,17 +44,17 @@ const CategoryPage = () => {
                 src={product.image}
                 alt={`Image of ${product.name}`}
                 fill
-                style={{ objectFit: "cover" }} // Using 'cover'
+                style={{ objectFit: "contain" }} // Back to 'contain'
                 className="transition-opacity duration-500 ease-in-out"
               />
 
-              {/* Second Image (On Hover) - Explicit sizing */}
+              {/* Second Image (On Hover) - Using transform for better overlap */}
               <Image
                 src={product.hoverImage}
                 alt={`Hover image of ${product.name}`}
                 fill
-                style={{ objectFit: "cover" }} // Using 'cover'
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
+                style={{ objectFit: "contain" }} // Back to 'contain'
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out group-hover:scale-100"
               />
             </div>
 
