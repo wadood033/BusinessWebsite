@@ -35,7 +35,7 @@ const CategoryPage = () => {
         {data.products.map((product, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg shadow-md w-full max-w-[300px] group flex flex-col" // Removed px-12 and py-2
+            className="border border-gray-300 rounded-lg px-12 py-2 shadow-md w-full max-w-[300px] group flex flex-col"
           >
             {/* Image Wrapper with fixed height */}
             <div className="relative w-full h-[180px] overflow-hidden rounded-lg">
@@ -58,19 +58,17 @@ const CategoryPage = () => {
               />
             </div>
 
-            <div className="px-4 py-2"> {/* Added a wrapper div for text content */}
-                <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
-                <p className="text-sm text-gray-500">Material: {product.material}</p>
-                <p className="text-sm text-gray-500">Sizing: {product.sizing}</p>
-                <p className="text-sm text-gray-500">Delivery: {product.delivery}</p>
-                <p
-                    className={`text-sm font-semibold ${
-                    product.customPrinting === "Available" ? "text-green-600" : "text-red-600"
-                    }`}
-                >
-                    Custom Printing: {product.customPrinting}
-                </p>
-            </div>
+            <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
+            <p className="text-sm text-gray-500">Material: {product.material}</p>
+            <p className="text-sm text-gray-500">Sizing: {product.sizing}</p>
+            <p className="text-sm text-gray-500">Delivery: {product.delivery}</p>
+            <p
+              className={`text-sm font-semibold ${
+                product.customPrinting === "Available" ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              Custom Printing: {product.customPrinting}
+            </p>
           </div>
         ))}
       </div>
