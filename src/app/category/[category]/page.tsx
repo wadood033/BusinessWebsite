@@ -35,30 +35,30 @@ const CategoryPage = () => {
         {data.products.map((product, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg shadow-md w-full max-w-[300px] group flex flex-col overflow-hidden"
+            className="border border-gray-300 rounded-lg shadow-md w-full max-w-[300px] group flex flex-col overflow-hidden" // Added overflow-hidden to the card
           >
-            {/* Image Wrapper */}
+            {/* Image Wrapper - Removed fixed height, adjusted padding */}
             <div className="relative w-full aspect-square rounded-t-lg overflow-hidden">
               {/* First Image (Initial State) */}
               <Image
                 src={product.image}
                 alt={`Image of ${product.name}`}
                 fill
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain" }} // Use 'contain' to show the whole image
                 className="transition-opacity duration-500 ease-in-out"
               />
 
-              {/* Second Image (On Hover) - Ensuring perfect overlap */}
+              {/* Second Image (On Hover) */}
               <Image
                 src={product.hoverImage}
                 alt={`Hover image of ${product.name}`}
                 fill
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain" }} // Use 'contain' to show the whole image
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
               />
             </div>
 
-            {/* Text Content */}
+            {/* Text Content - Adjusted padding */}
             <div className="p-4 flex flex-col flex-grow">
               <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
               <p className="text-sm text-gray-500 mt-1">Material: {product.material}</p>
