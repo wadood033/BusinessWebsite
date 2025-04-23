@@ -45,7 +45,7 @@ const CategoryPage = () => {
                 alt={`Image of ${product.name}`}
                 fill
                 style={{ objectFit: "contain" }}
-                className="transition-opacity duration-300 ease-in-out"
+                className="transition-opacity duration-300 ease-in-out group-hover:opacity-0" // Base image fades out on hover
               />
               {/* Hover Image */}
               <Image
@@ -53,7 +53,7 @@ const CategoryPage = () => {
                 alt={`Hover image of ${product.name}`}
                 fill
                 style={{ objectFit: "contain" }}
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" // Hover image fades in on hover
               />
             </div>
 
