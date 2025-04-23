@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { FaChevronLeft, FaChevronRight, FaWhatsapp } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { FaChevronLeft, FaChevronRight, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 const images: string[] = [
-  '/homepage1.jpeg',
-  '/homepage2.jpg',
-  '/homepage3.jpg',
-
+  "/homepage1.jpeg",
+  "/homepage2.jpg",
+  "/homepage3.jpg",
 ];
 
 const Slider: React.FC = () => {
@@ -28,18 +28,20 @@ const Slider: React.FC = () => {
         }}
         speed={600}
         navigation={{
-          nextEl: '.custom-next',
-          prevEl: '.custom-prev',
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
         }}
         className="h-full"
       >
         {images.map((src, index) => (
           <SwiperSlide key={index} className="h-full">
-            <div className="w-full h-full flex items-center justify-center overflow-hidden">
-              <img
+            <div className="w-full h-full relative">
+              <Image
                 src={src}
-                alt={`Slide ${index}`}
-                className="w-full h-full object-cover mt-20"
+                alt={`Slide ${index + 1}`}
+                fill
+                priority
+                className="object-cover mt-20"
               />
             </div>
           </SwiperSlide>
@@ -54,9 +56,8 @@ const Slider: React.FC = () => {
         <FaChevronRight className="text-lg sm:text-2xl" />
       </button>
 
-      {/* Fixed WhatsApp Button (Trying web.whatsapp.com link) */}
       <a
-        href={`https://web.whatsapp.com/send?phone=923277145151`}
+        href="https://web.whatsapp.com/send?phone=923277145151"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 ease-in-out z-20 flex items-center space-x-2"
@@ -66,48 +67,21 @@ const Slider: React.FC = () => {
       </a>
 
       <style jsx global>{`
-        .swiper-container {
-          width: 100% !important;
-          height: 100vh !important;
-        }
+        .swiper-container,
         .swiper-slide {
           width: 100% !important;
           height: 100vh !important;
         }
-        .swiper-slide img {
-          width: 100% !important;
-          height: 100% !important;
-          object-fit: cover;
+
+        .swiper-slide > div {
+          position: relative;
+          width: 100%;
+          height: 100%;
         }
-        .custom-navigation {
-          z-index: 10;
-        }
-        @media (max-width: 1450px) {
-          .swiper-slide img {
-            width: 100% !important;
-            height: 100vh !important;
-            object-fit: fill;
-          }
-        }
+
         @media (max-width: 1024px) {
-          .swiper-slide img {
-            width: 100% !important;
-            height: 100vh !important;
-            object-fit: fill;
-          }
-        }
-        @media (max-width: 768px) {
-          .swiper-slide img {
-            width: 100% !important;
-            height: 100vh !important;
-            object-fit: fill;
-          }
-        }
-        @media (max-width: 480px) {
-          .swiper-slide img {
-            width: 100% !important;
-            height: 100vh !important;
-            object-fit: fill;
+          .swiper-slide > div > span {
+            top: 5rem !important;
           }
         }
       `}</style>

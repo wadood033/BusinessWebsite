@@ -4,9 +4,14 @@ import { useParams } from "next/navigation";
 import { categoryData } from "../../lib/categoryData";
 import Image from "next/image";
 
+// Define type for category route parameter
+interface Params {
+  category?: string;
+}
+
 const CategoryPage = () => {
-  const params = useParams();
-  const category = params.category as string;
+  const params = useParams() as Params;
+  const category = params.category || "";
   const data = categoryData[category];
 
   if (!data) {
@@ -22,7 +27,7 @@ const CategoryPage = () => {
       {/* Category Title with Black Underline */}
       <h1 className="text-4xl font-bold text-center mb-12 relative">
         {data.title}
-        <span className="block w-28 h-[3px] bg-black mx-auto mt-2"></span>
+        <span className="block w-28 h-[3px] bg-black mx-auto mt-2" />
       </h1>
 
       {/* Product Grid */}
@@ -33,22 +38,22 @@ const CategoryPage = () => {
             className="border border-gray-300 rounded-lg px-12 py-2 shadow-md w-full max-w-[300px] group flex flex-col"
           >
             {/* Image Wrapper with fixed height */}
-            <div className="relative w-full h-70 overflow-hidden rounded-lg">
+            <div className="relative w-full h-[180px] overflow-hidden rounded-lg">
               {/* First Image (Initial State) */}
               <Image
                 src={product.image}
-                alt={product.name}
-                width={180}  // Reduced width
-                height={105} // Reduced height
+                alt={`Image of ${product.name}`}
+                width={180}
+                height={105}
                 className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
               />
 
               {/* Second Image (On Hover) */}
               <Image
-                src={product.hoverImage} // Hover image
-                alt={product.name}
-                width={180}  // Reduced width
-                height={105} // Reduced height
+                src={product.hoverImage}
+                alt={`Hover image of ${product.name}`}
+                width={180}
+                height={105}
                 className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
               />
             </div>

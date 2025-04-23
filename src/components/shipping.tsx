@@ -17,10 +17,10 @@ const fadeIn = {
 
 const Shipping: React.FC = () => {
   return (
-    <section className="w-full bg-gray-50 py-20 md:py-32">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
+    <section className="w-full bg-gray-50 py-20 md:py-28">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-          {/* Left Side: Text Content */}
+          {/* Text Content */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -32,45 +32,45 @@ const Shipping: React.FC = () => {
               Seamless Shipping with Our Trusted Partners
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              We understand the importance of reliable and efficient shipping. That's why we've partnered with leading logistics companies worldwide to ensure your orders are delivered safely and on time, every time.
+              We partner with global logistics leaders to ensure timely and secure delivery of your products, anywhere in the world.
             </p>
-            <div className="bg-white shadow-lg rounded-lg p-8 max-w-xl mx-auto lg:mx-0">
+            <div className="bg-white shadow-xl rounded-xl p-8 max-w-xl mx-auto lg:mx-0">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-6">
-                Experience Hassle-Free Delivery
+                Why Choose Our Delivery?
               </h3>
               <ul className="text-gray-700 space-y-4 text-base md:text-lg">
-                <li><span className="text-green-500 mr-2">✔</span> Global Reach: Delivering to your doorstep, wherever you are.</li>
-                <li><span className="text-green-500 mr-2">✔</span> Secure Handling: Ensuring your products arrive in perfect condition.</li>
-                <li><span className="text-green-500 mr-2">✔</span> Real-time Tracking: Stay informed with up-to-the-minute delivery updates.</li>
-                <li><span className="text-green-500 mr-2">✔</span> Dedicated Support: Our team is here to assist you with any shipping inquiries.</li>
+                <li><span className="text-green-500 mr-2">✔</span> Worldwide Reach with real-time tracking</li>
+                <li><span className="text-green-500 mr-2">✔</span> Safe Packaging & Secure Delivery</li>
+                <li><span className="text-green-500 mr-2">✔</span> Fast Processing Times</li>
+                <li><span className="text-green-500 mr-2">✔</span> 24/7 Support for shipping inquiries</li>
               </ul>
             </div>
           </motion.div>
 
-          {/* Right Side: Shipping Partner Logos */}
+          {/* Logo Grid */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="lg:w-1/2 grid grid-cols-2 gap-12 justify-center items-center"
+            className="lg:w-1/2 grid grid-cols-2 sm:grid-cols-2 gap-8 justify-center items-center"
           >
             {logisticsPartners.map((partner, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg w-full max-w-md"
+                className="flex flex-col items-center bg-white p-6 shadow-lg rounded-xl transform hover:scale-105 transition duration-300 ease-in-out"
               >
-                <div className="relative w-40 h-24 md:w-48 md:h-28">
+                <div className="relative w-36 h-20 md:w-44 md:h-24">
                   <Image src={partner.src} alt={partner.name} fill className="object-contain" />
                 </div>
                 <p className="mt-4 text-gray-800 font-semibold text-lg text-center">{partner.name}</p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
 
-        {/* Section for Emphasizing Partnerships */}
-        <div className="mt-16 md:mt-24 py-12 border-t border-gray-200">
+        {/* Partner Bar */}
+        <div className="mt-20 py-12 border-t border-gray-200">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -78,27 +78,20 @@ const Shipping: React.FC = () => {
             variants={fadeIn}
             className="text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
-              Proudly Partnering With Industry Leaders
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">
+              Proud Logistics Collaborations
             </h2>
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-center gap-10">
               {logisticsPartners.map((partner, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className={`flex items-center rounded-md py-3 px-6 shadow-sm ${
-                    partner.name === "UPS" || partner.name === "FedEx" ? "" : "bg-white-100"
-                  }`}
+                  className="flex items-center bg-white rounded-lg p-3 px-6 shadow-md hover:shadow-lg transition duration-300"
                 >
-                  <div className="relative w-24 h-14 md:w-32 md:h-18">
-                    <Image
-                      src={partner.src}
-                      alt={partner.name}
-                      fill
-                      className="object-contain grayscale hover:grayscale-0 transition duration-300"
-                    />
+                  <div className="relative w-24 h-14 md:w-28 md:h-16 grayscale hover:grayscale-0 transition duration-300 ease-in-out">
+                    <Image src={partner.src} alt={partner.name} fill className="object-contain" />
                   </div>
-                  <p className="ml-3 font-medium text-gray-700 hidden md:block">{partner.name}</p>
-                </motion.div>
+                  <p className="ml-4 font-medium text-gray-700 hidden md:block">{partner.name}</p>
+                </div>
               ))}
             </div>
           </motion.div>
