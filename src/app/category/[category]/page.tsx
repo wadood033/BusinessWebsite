@@ -35,43 +35,40 @@ const CategoryPage = () => {
         {data.products.map((product, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg shadow-md w-full max-w-[250px] group flex flex-col overflow-hidden" // Reduced max-w
+            className="border border-gray-300 rounded-lg px-12 py-2 shadow-md w-full max-w-[300px] group flex flex-col"
           >
-            {/* Image Wrapper - Reduced height */}
-            <div className="relative w-full h-[150px] rounded-t-lg overflow-hidden">
+            {/* Image Wrapper with fixed height */}
+            <div className="relative w-full h-[180px] overflow-hidden rounded-lg">
               {/* First Image (Initial State) */}
               <Image
                 src={product.image}
                 alt={`Image of ${product.name}`}
-                fill
-                style={{ objectFit: "contain" }}
-                className="transition-opacity duration-500 ease-in-out"
+                width={180}
+                height={105}
+                className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
               />
 
               {/* Second Image (On Hover) */}
               <Image
                 src={product.hoverImage}
                 alt={`Hover image of ${product.name}`}
-                fill
-                style={{ objectFit: "contain" }}
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
+                width={180}
+                height={105}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
               />
             </div>
 
-            {/* Text Content - Adjusted padding */}
-            <div className="p-4 flex flex-col flex-grow">
-              <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
-              <p className="text-sm text-gray-500 mt-1">Material: {product.material}</p>
-              <p className="text-sm text-gray-500 mt-1">Sizing: {product.sizing}</p>
-              <p className="text-sm text-gray-500 mt-1">Delivery: {product.delivery}</p>
-              <p
-                className={`text-sm font-semibold mt-1 ${
-                  product.customPrinting === "Available" ? "text-green-600" : "text-red-600"
-                }`}
-              >
-                Custom Printing: {product.customPrinting}
-              </p>
-            </div>
+            <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
+            <p className="text-sm text-gray-500">Material: {product.material}</p>
+            <p className="text-sm text-gray-500">Sizing: {product.sizing}</p>
+            <p className="text-sm text-gray-500">Delivery: {product.delivery}</p>
+            <p
+              className={`text-sm font-semibold ${
+                product.customPrinting === "Available" ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              Custom Printing: {product.customPrinting}
+            </p>
           </div>
         ))}
       </div>
