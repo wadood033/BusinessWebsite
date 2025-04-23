@@ -33,7 +33,11 @@ const ContactForm: React.FC = () => {
         ];
 
         const countryData: Country[] = response.data
-          .map((country: any) => ({
+          .map((country: {
+            name: { common: string };
+            idd?: { root?: string; suffixes?: string[] };
+            flags?: { png?: string };
+          }) => ({
             name: country.name.common,
             code: country.idd?.root
               ? country.idd.root + (country.idd.suffixes?.[0] || "")
